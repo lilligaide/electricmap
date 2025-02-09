@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.station-marker {
+  background-color: white;
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.station-marker.available {
+  border: 2px solid #22c55e;
+}
+
+.station-marker.unavailable {
+  border: 2px solid #ef4444;
+}
+
+.custom-marker {
+  background: none;
+  border: none;
+}

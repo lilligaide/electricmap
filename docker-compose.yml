@@ -1,0 +1,27 @@
+# Docker Compose configuration for EV Charging Finder
+# Designed for deployment with Portainer
+version: '3.8'
+
+services:
+  # Main application service
+  ev-charging-finder:
+    build:
+      context: .  # Build context is the current directory
+      dockerfile: Dockerfile  # Use the multi-stage Dockerfile
+    image: ev-charging-finder:latest  # Tag for the built image
+    container_name: ev-charging-finder  # Container name for easy reference
+    ports:
+      - "3000:80"  # Map host port 3000 to container port 80
+    restart: unless-stopped  # Automatically restart container unless manually stopped
+    environment:
+      - NODE_ENV=production  # Set Node environment to production
+    healthcheck:  # Health check configuration
+      test: ["CMD", "curl", "-f", "http://localhost:80"]  # Test HTTP endpoint
+      interval: 30s  # Check every 30 seconds
+      timeout: 10s  # Timeout after 10 seconds
+      retries: 3  # Retry 3 times before marking unhealthy
+      start_period: 40s  # Initial grace period
+    labels:  # Traefik labels for reverse proxy configuration
+      - "traefik.enable=true"  # Enable Traefik for this service
+      - "traefik.http.routers.ev-charging.rule=Host(`charging.yourdomain.com`)"  # Domain routing rule
+      - "traefik.http.services.ev-charging.loadbalancer.server.port=80"  # Internal port for load balancing 

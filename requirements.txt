@@ -1,0 +1,25 @@
+# Python dependencies for development tools and scripts
+# Version numbers are pinned for reproducibility
+
+# Development Tools
+pylint==3.0.3             # Python linting
+black==24.2.0             # Code formatting
+isort==5.13.2            # Import sorting
+
+# Testing and Coverage
+pytest==8.0.2            # Testing framework
+pytest-cov==4.1.0        # Coverage reporting
+pytest-mock==3.12.0      # Mocking for tests
+
+# Documentation
+mkdocs==1.5.3            # Documentation generator
+mkdocs-material==9.5.9   # Material theme for documentation
+mkdocstrings==0.24.0     # Python API documentation
+
+# Build Tools
+wheel==0.42.0            # Package distribution
+twine==4.0.2             # Package publishing
+build==1.0.3             # PEP 517 package builder
+
+# Environment Management
+python-dotenv==1.0.1     # Environment variable management 
